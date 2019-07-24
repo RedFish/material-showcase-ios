@@ -80,6 +80,8 @@ public class MaterialShowcase: UIView {
   @objc public var secondaryTextFont: UIFont?
   @objc public var primaryTextAlignment: NSTextAlignment = .left
   @objc public var secondaryTextAlignment: NSTextAlignment = .left
+  @objc public var primaryAttributedText: NSAttributedString?
+  @objc public var secondaryAttributedText: NSAttributedString?
   // Animation
   @objc public var aniComeInDuration: TimeInterval = 0.0
   @objc public var aniGoOutDuration: TimeInterval = 0.0
@@ -402,12 +404,14 @@ extension MaterialShowcase {
     instructionView.primaryTextSize = primaryTextSize
     instructionView.primaryTextColor = primaryTextColor
     instructionView.primaryText = primaryText
+    instructionView.primaryAttributedText = primaryAttributedText
     
     instructionView.secondaryTextAlignment = secondaryTextAlignment
     instructionView.secondaryTextFont = secondaryTextFont
     instructionView.secondaryTextSize = secondaryTextSize
     instructionView.secondaryTextColor = secondaryTextColor
     instructionView.secondaryText = secondaryText
+    instructionView.secondaryAttributedText = secondaryAttributedText
     
     // Calculate x position
     var xPosition = LABEL_MARGIN
