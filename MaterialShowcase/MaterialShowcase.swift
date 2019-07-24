@@ -7,7 +7,7 @@
 //
 import UIKit
 
-@objc public protocol MaterialShowcaseDelegate: class {
+@objc public protocol MaterialShowcaseDelegate {
   @objc optional func showCaseWillDismiss(showcase: MaterialShowcase, didTapTarget:Bool)
   @objc optional func showCaseDidDismiss(showcase: MaterialShowcase, didTapTarget:Bool)
 }
@@ -474,9 +474,7 @@ extension MaterialShowcase {
   /// Default action when dimissing showcase
   /// Notifies delegate, removes views, and handles out-going animation
   @objc public func completeShowcase(animated: Bool = true, didTapTarget: Bool = false) {
-    if delegate != nil && delegate?.showCaseDidDismiss != nil {
-      delegate?.showCaseWillDismiss?(showcase: self, didTapTarget: didTapTarget)
-    }
+    delegate?.showCaseWillDismiss?(showcase: self, didTapTarget: didTapTarget)
     if animated {
       targetRippleView.removeFromSuperview()
       UIView.animateKeyframes(withDuration: aniGoOutDuration, delay: 0, options: [.calculationModeLinear], animations: {
@@ -500,9 +498,7 @@ extension MaterialShowcase {
       // Remove it from current screen
       self.removeFromSuperview()
     }
-    if delegate != nil && delegate?.showCaseDidDismiss != nil {
-      delegate?.showCaseDidDismiss?(showcase: self, didTapTarget: didTapTarget)
-    }
+    delegate?.showCaseDidDismiss?(showcase: self, didTapTarget: didTapTarget)
 
   }
   

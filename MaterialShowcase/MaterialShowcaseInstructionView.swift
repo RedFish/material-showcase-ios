@@ -32,6 +32,8 @@ public class MaterialShowcaseInstructionView: UIView {
   public var secondaryTextFont: UIFont?
   public var primaryTextAlignment: NSTextAlignment!
   public var secondaryTextAlignment: NSTextAlignment!
+  public var primaryAttributedText: NSAttributedString?
+  public var secondaryAttributedText: NSAttributedString?
   
   public init() {
     // Create frame
@@ -77,7 +79,12 @@ public class MaterialShowcaseInstructionView: UIView {
     primaryLabel.textAlignment = self.primaryTextAlignment ?? .left
     primaryLabel.numberOfLines = 0
     primaryLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
-    primaryLabel.text = primaryText
+    if let primaryAttributedText = primaryAttributedText {
+        primaryLabel.attributedText = primaryAttributedText
+    }
+    else {
+        primaryLabel.text = primaryText
+    }
     primaryLabel.frame = CGRect(x: 0,
                                 y: 0,
                                 width: getWidth(),
@@ -101,7 +108,12 @@ public class MaterialShowcaseInstructionView: UIView {
     secondaryLabel.textColor = secondaryTextColor
     secondaryLabel.textAlignment = self.secondaryTextAlignment ?? .left
     secondaryLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
-    secondaryLabel.text = secondaryText
+    if let secondaryAttributedText = secondaryAttributedText {
+        secondaryLabel.attributedText = secondaryAttributedText
+    }
+    else {
+        secondaryLabel.text = secondaryText
+    }
     secondaryLabel.numberOfLines = 0
     
     secondaryLabel.frame = CGRect(x: 0,
