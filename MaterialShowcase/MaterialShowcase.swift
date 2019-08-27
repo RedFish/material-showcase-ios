@@ -472,8 +472,10 @@ extension MaterialShowcase {
   }
   
   @objc private func tapGestureSelector(tapGesture:UITapGestureRecognizer) {
-    let point = tapGesture.location(in: self)
-    let rect = self.convert(targetView.frame, from: targetView)
+    let point = tapGesture.location(in: targetView)
+    let rect = targetView.bounds
+    let didTapTarget = rect.contains(point)
+    print("point=\(point); rect=\(rect); didTapTarget=\(didTapTarget)")
     completeShowcase(didTapTarget: rect.contains(point))
 
   }
